@@ -62,8 +62,7 @@
 | إنشاء نسخة من ملف البيئة | `copy .env.example .env` |
 | توليد مفتاح التطبيق | `php artisan key:generate` |
 | إعداد قاعدة البيانات | فتح `.env` وتعديل `DB_DATABASE`, `DB_USERNAME`, `DB_PASSWORD` <br> `php artisan migrate` |
-| تشغيل السيرفر المحلي | `php artisan serve` <br> الوصول عبر [http://127.0.0.1:8000/register](http://127.0.0.1:8000/register) |
-
+| تشغيل السيرفر المحلي | `php artisan serve` <br> الوصول الى register
 
 
  
