@@ -1,30 +1,55 @@
 <!DOCTYPE html>
 <html lang="ar">
 <head>
-<meta charset="UTF-8">
-<title>تسجيل الدخول</title>
-<style>
-body { font-family: Arial; display: flex; justify-content: center; align-items: center; height: 100vh; background: #f0f2f5; }
-form { background: white; padding: 30px; border-radius: 10px; box-shadow: 0 0 10px rgba(0,0,0,0.1); width: 300px; }
-input, button { display: block; width: 100%; margin: 10px 0; padding: 10px; border-radius: 5px; border: 1px solid #ccc; }
-button { background: #28a745; color: white; border: none; cursor: pointer; }
-button:hover { background: #218838; }
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تسجيل الدخول</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+        }
+        .form-container {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
+            width: 350px;
+        }
+        input { width: 100%; padding: 8px; margin: 8px 0; border-radius: 5px; border: 1px solid #ccc; }
+        button { width: 100%; padding: 10px; margin-top: 10px; background-color: #2196F3; color: white; border: none; border-radius: 5px; cursor: pointer; }
+        button:hover { background-color: #1976D2; }
+        a { text-decoration: none; color: #333; }
+        h2 { text-align: center; margin-bottom: 20px; }
+        .message { text-align: center; margin-bottom: 10px; }
+        .success { color: green; }
+        .error { color: red; }
+    </style>
 </head>
 <body>
-<form action="/login" method="POST">
-    @csrf
-    <h2>تسجيل الدخول</h2>
-    @if($errors->any())
-        <div style="color:red">
-            @foreach($errors->all() as $error) {{ $error }} <br> @endforeach
-        </div>
-    @endif
-    @if(session('success')) <p style="color:green">{{ session('success') }}</p> @endif
-    <input type="email" name="email" placeholder="البريد الإلكتروني" required>
-    <input type="password" name="password" placeholder="كلمة المرور" required>
-    <button type="submit">تسجيل الدخول</button>
-    <p>ليس لديك حساب؟ <a href="/register">إنشاء حساب</a></p>
-</form>
+    <div class="form-container">
+        <h2>تسجيل الدخول</h2>
+
+        @if(session('success'))
+            <div class="message success">{{ session('success') }}</div>
+        @endif
+
+        @if(session('error'))
+            <div class="message error">{{ session('error') }}</div>
+        @endif
+
+        <form action="/login" method="POST">
+            @csrf
+            <input type="email" name="email" placeholder="البريد">
+            <input type="password" name="password" placeholder="كلمة المرور">
+            <button type="submit">دخول</button>
+        </form>
+
+        <p style="text-align:center; margin-top:10px;">ليس لديك حساب؟ <a href="/register">تسجيل مستخدم جديد</a></p>
+    </div>
 </body>
 </html>

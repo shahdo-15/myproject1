@@ -1,7 +1,4 @@
 <?php
-
-
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -13,24 +10,18 @@
 |
 */
 
+
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Auth\RegisterController;
-use App\Http\Controllers\Auth\LoginController;
-use App\Http\Controllers\WelcomeController;
+use App\Http\Controllers\UserController;
 
-// تسجيل مستخدم جديد
-Route::get('/register', [RegisterController::class,'show'])->middleware('guest');
-Route::post('/register', [RegisterController::class,'register']);
+// صفحات التسجيل وتسجيل الدخول
+Route::get('/register', [UserController::class, 'showRegister']);
+Route::post('/register', [UserController::class, 'register']);
+Route::get('/login', [UserController::class, 'showLogin']);
+Route::post('/login', [UserController::class, 'login']);
 
 
-
-// تسجيل الدخول
-Route::get('/login', [LoginController::class,'show'])->middleware('guest');
-Route::post('/login', [LoginController::class,'login']);
-
-// صفحة الترحيب
-
-Route::get('/welcome', [WelcomeController::class,'index'])->middleware('auth');
+Route::get('/welcome', [UserController::class, 'welcome']);
 
 // تسجيل الخروج
-Route::get('/logout', [LoginController::class,'logout']);
+Route::get('/logout', [UserController::class, 'logout']);
